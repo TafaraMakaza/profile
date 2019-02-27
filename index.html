@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+	<head>
+		<title>Tafara Makaza</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+	<div id='body'>
+	<div id='body2'>
+	<center><h1>Hello world, I'm Tafara Makaza.</h1></center>
+	<div class="laptop">
+		<div class="content">
+			<div id="code">
+				<div id="shell">
+					Hi, there! :D<br><br>
+					I'm currently improving my website. In the meantime, feel free to check out my startups or to connect via social media!<br><br>
+					To see my startups<br>
+					(Type 'farmarvest' || 'zimtaxi' || 'startupzim')<br>
+					and to see my social media accounts<br>
+					(Type 'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp')<br>
+					<input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
+				</div>
+			</div>
+		</div>
+		<div class="btm"></div>
+	</div>
+	</div>
+	</div>
+	</body>
+	<script>
+		function giveCupcake(){
+			var command = document.getElementById('cmd');
+			if(command != null){
+
+				if(command.value.toLowerCase() == 'facebook'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://www.facebook.com/tafara.makaza.5', '_blank');
+					win.focus();
+				}
+				if(command.value.toLowerCase() == 'twitter'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://twitter.com/captain_zim/', '_blank');
+					win.focus();
+				}
+				if(command.value.toLowerCase() == 'linkedin'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://www.linkedin.com/in/tafara-makaza-99529a127/', '_blank');
+					win.focus();
+				}
+				if(command.value.toLowerCase() == 'github'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://github.com/TafaraMakaza', '_blank');
+					win.focus();
+				}
+				if(command.value.toLowerCase() == 'email'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('mailto:tm6@williams.edu', '_blank');
+        			win.focus();
+				}
+
+				if(command.value.toLowerCase() == 'farmarvest'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('http://www.farmarvest.com/', '_blank');
+        			win.focus();
+				}
+				if(command.value.toLowerCase() == 'zimtaxi'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('http://www.zimtaxiapp.com/', '_blank');
+        			win.focus();
+				}
+				if(command.value.toLowerCase() == 'startupzim'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://startupzim.com', '_blank');
+        			win.focus();
+				}
+				if(command.value.toLowerCase() == 'whatsapp'){
+					document.body.style.backgroundColor = "#000000";
+					var win = window.open('https://wa.me/+263784526338', '_blank');
+        			win.focus();
+				}
+			}
+		}
+		
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type='text/javascript' src='/js/jquery.mousewheel.min.js'></script>
+	</html>
