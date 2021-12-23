@@ -46,8 +46,8 @@ h2 {
 }
 .laptop {
 	/*846px width, 471px height*/
-  width: 60%;
-  height: 60%;
+  width: 846px;
+  height: 471px;
   background: #E8E859;
   border: 43px solid #202020;
   border-radius: 36px 36px 0 0;
