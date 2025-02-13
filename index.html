@@ -20,7 +20,6 @@
 
     <div id="particles-js">
         <div id='body'>
-            <div id="google-calendar-button"></div>
             <div id='body2'>
                 <center>
                     <h1>The future is written in code</h1>
@@ -35,23 +34,25 @@
                                 <p>📬 Want to connect? Try: <br> <strong>'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'</strong></p>
                                 <p>⏳ The future is just a keystroke away...</p>
                                 <input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
+                                 <div id="google-calendar-button"></div>
                             </div>
 
 
                             <!-- Google Calendar Appointment Scheduling begin -->
-                            <script>
-                                (function() {
-                                    var target: document.getElementById('google-calendar-button');
-                                    window.addEventListener('load', function() {
-                                        calendar.schedulingButton.load({
-                                            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
-                                            color: '#039BE5',
-                                            label: 'Book an appointment',
-                                            target,
-                                        });
-                                    });
-                                })();
-                            </script>
+<script>
+    window.addEventListener('load', function() {
+        var target = document.getElementById('google-calendar-button');
+
+        if (target) {
+            window.calendar.schedulingButton.load({
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
+                color: '#039BE5',
+                label: 'Book an appointment',
+                target: target
+            });
+        }
+    });
+</script>
 
                             <script src="particles.js"></script>
                             <script src="app.js"></script>
