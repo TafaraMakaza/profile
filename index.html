@@ -8,6 +8,28 @@
     <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
     <script src="https://calendar.google.com/calendar/scheduling-button-script.js"></script>
     <meta name="viewport" content="width=device-width">
+    <style>
+        /* Add custom styles for spacing */
+        #cmd {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+            padding: 8px;
+        }
+        
+        #google-calendar-button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Container for better organization */
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,8 +47,10 @@
                                 <p>🚀 I'm Tafara—an explorer of both galaxies and technology.</p>
                                 <p>🌍 My work has connected me with innovators, entrepreneurs, and changemakers worldwide.</p>
                                 <p>📬 Want to connect? Type In: <br> <strong>'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'</strong></p>
-                                <input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
-                                <div id="google-calendar-button"></div>
+                                <div class="input-container">
+                                    <input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
+                                    <div id="google-calendar-button"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
