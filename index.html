@@ -4,11 +4,11 @@
 		<title>Tafara Makaza</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 		<meta name="viewport" content="width=device-width">
 		<!--
 , initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no
 -->
-
 	</head>
 	<body>
 	<!-- count particles -->
@@ -18,6 +18,7 @@
 		
 	<div id="particles-js">	
 	<div id='body'>
+	<div id="google-calendar-button"></div>
 	<div id='body2'>
 	<center><h1>The future is written in code</h1></center>
 	<div class="laptop">
@@ -33,11 +34,9 @@
 					<input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
 				
 				<!-- Google Calendar Appointment Scheduling begin -->
-<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 <script>
 (function() {
-  var target = document.currentScript;
+  var target: document.getElementById('google-calendar-button');
   window.addEventListener('load', function() {
     calendar.schedulingButton.load({
       url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
@@ -48,16 +47,6 @@
   });
 })();
 </script>
-<!-- end Google Calendar Appointment Scheduling -->
-				</div>
-			</div>
-		</div>
-		<div class="btm"></div>
-	</div>
-	</div>
-	</div>
-		</div>	
-	</body>
 
 <script src="particles.js"></script>
 <script src="app.js"></script>
