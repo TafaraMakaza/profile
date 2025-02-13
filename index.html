@@ -1,123 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tafara Makaza's Portfolio - Explorer of galaxies and technology">
-    
     <title>Tafara Makaza</title>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://calendar.google.com/calendar/scheduling-button-script.css">
-    
-    <!-- Scripts -->
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" defer></script>
-    <script src="particles.js" defer></script>
-    <script src="app.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+    <script src="https://calendar.google.com/calendar/scheduling-button-script.js"></script>
+    <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
     <div id="particles-js">
         <div id='body'>
             <div id='body2'>
-                <header>
+                <center>
                     <h1>The future is written in code</h1>
-                </header>
-                
-                <main class="laptop">
+                </center>
+                <div class="laptop">
                     <div class="content">
                         <div id="code">
-                            <div id="shell" role="main" aria-label="Command interface">
+                            <div id="shell">
                                 <p>👋 Hey there, Welcome to my digital hideout.</p>
                                 <p>🚀 I'm Tafara—an explorer of both galaxies and technology.</p>
                                 <p>🌍 My work has connected me with innovators, entrepreneurs, and changemakers worldwide.</p>
-                                <p>📬 Want to connect? Type In: <br> 
-                                    <strong aria-label="Available commands">
-                                        'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'
-                                    </strong>
-                                </p>
-                                
-                                <input 
-                                    type="text" 
-                                    id="cmd" 
-                                    aria-label="Command input"
-                                    placeholder="Type a command..."
-                                    autocomplete="off"
-                                    style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px">
-                                
-                                <div id="google-calendar-button" aria-label="Schedule meeting"></div>
+                                <p>📬 Want to connect? Type In: <br> <strong>'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'</strong></p>
+                                <input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
+                                <div id="google-calendar-button"></div>
                             </div>
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Separated JavaScript -->
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Google Calendar Appointment Scheduling -->
     <script>
-    // Command handler initialization
-    document.addEventListener('DOMContentLoaded', function() {
-        const cmdInput = document.getElementById('cmd');
-        if (cmdInput) {
-            cmdInput.addEventListener('keydown', function(event) {
-                if (event.keyCode === 13) {
-                    handleCommand(this.value);
-                }
-            });
-        }
-
-        // Initialize Google Calendar Button
-        const target = document.getElementById('google-calendar-button');
-        if (target && window.calendar && window.calendar.schedulingButton) {
-            window.calendar.schedulingButton.load({
-                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
-                color: '#039BE5',
-                label: 'Book an appointment',
-                target: target
-            });
-        }
-    });
-
-    // Command handler function
-    function handleCommand(command) {
-        if (!command) return;
-        
-        const commands = {
-            'facebook': 'https://www.facebook.com/tafara.makaza.5',
-            'twitter': 'https://twitter.com/captain_zim/',
-            'linkedin': 'https://www.linkedin.com/in/tafara-makaza-99529a127/',
-            'github': 'https://github.com/TafaraMakaza',
-            'email': 'mailto:tm6@williams.edu',
-            'whatsapp': 'https://wa.me/+263784526338'
-        };
-
-        const sanitizedCommand = command.toLowerCase().trim();
-        const url = commands[sanitizedCommand];
-
-        if (url) {
-            // Security enhancement: Add noopener and noreferrer
-            window.open(url, '_blank', 'noopener,noreferrer');
-        } else {
-            // Error handling for invalid commands
-            console.log('Invalid command: ' + sanitizedCommand);
-        }
-
-        // Reset command input
-        document.getElementById('cmd').value = '';
-    }
-
-    // Initialize particles
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.particlesJS) {
-            particlesJS('particles-js', {
-                // Your particles configuration here
-            });
-        }
-    });
+        window.addEventListener('load', function() {
+            var target = document.getElementById('google-calendar-button');
+            if (target && window.calendar && window.calendar.schedulingButton) {
+                window.calendar.schedulingButton.load({
+                    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
+                    color: '#039BE5',
+                    label: 'Book an appointment',
+                    target: target
+                });
+            }
+        });
     </script>
+
+    <script>
+        function giveCupcake() {
+            var command = document.getElementById('cmd');
+            if (command != null) {
+                const commands = {
+                    'facebook': 'https://www.facebook.com/tafara.makaza.5',
+                    'twitter': 'https://twitter.com/captain_zim/',
+                    'linkedin': 'https://www.linkedin.com/in/tafara-makaza-99529a127/',
+                    'github': 'https://github.com/TafaraMakaza',
+                    'email': 'mailto:tm6@williams.edu',
+                    'whatsapp': 'https://wa.me/+263784526338',
+                    'tuverl': 'http://www.tuverl.com/',
+                    'fixa': 'http://www.fixahr.com/',
+                    'samsung': 'https://www.youtube.com/watch?v=bqfMCUC-tL8&t=3s'
+                };
+
+                const commandValue = command.value.toLowerCase();
+                if (commands[commandValue]) {
+                    document.body.style.backgroundColor = "#000000";
+                    window.open(commands[commandValue], '_blank', 'noopener,noreferrer');
+                }
+            }
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type='text/javascript' src='/js/jquery.mousewheel.min.js'></script>
 </body>
 </html>
