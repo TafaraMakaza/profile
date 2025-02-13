@@ -31,6 +31,24 @@
 					and to get in touch ... <br>
 					(Type 'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp')<br>
 					<input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
+				
+				<!-- Google Calendar Appointment Scheduling begin -->
+<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<script>
+(function() {
+  var target = document.currentScript;
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
+      color: '#039BE5',
+      label: 'Book an appointment',
+      target,
+    });
+  });
+})();
+</script>
+<!-- end Google Calendar Appointment Scheduling -->
 				</div>
 			</div>
 		</div>
