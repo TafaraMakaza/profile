@@ -1,48 +1,78 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tafara Makaza's Portfolio - Explorer of galaxies and technology">
+    
     <title>Tafara Makaza</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width">
-    <!--
-, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no
--->
+    
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://calendar.google.com/calendar/scheduling-button-script.css">
+    
+    <!-- Scripts -->
+    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" defer></script>
+    <script src="particles.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 
 <body>
-    <!-- count particles -->
-    <!-- <div class="count-particles">
-  <span class="js-count-particles">--</span> particles
-</div> -->
-
     <div id="particles-js">
-        <div id="google-calendar-button"></div>
         <div id='body'>
             <div id='body2'>
-                <center>
+                <header>
                     <h1>The future is written in code</h1>
-                </center>
-                <div class="laptop">
+                </header>
+                
+                <main class="laptop">
                     <div class="content">
                         <div id="code">
-                            <div id="shell">
+                            <div id="shell" role="main" aria-label="Command interface">
                                 <p>👋 Hey there, Welcome to my digital hideout.</p>
                                 <p>🚀 I'm Tafara—an explorer of both galaxies and technology.</p>
                                 <p>🌍 My work has connected me with innovators, entrepreneurs, and changemakers worldwide.</p>
-                                <p>📬 Want to connect? Type In: <br> <strong>'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'</strong></p>
-                                <input type="text" id="cmd" value="" onkeydown="if (event.keyCode == 13) giveCupcake();" autofocus style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px" />
-                                 <div id="google-calendar-button"></div>
+                                <p>📬 Want to connect? Type In: <br> 
+                                    <strong aria-label="Available commands">
+                                        'github' || 'linkedin' || 'twitter' || 'facebook' || 'email' || 'whatsapp'
+                                    </strong>
+                                </p>
+                                
+                                <input 
+                                    type="text" 
+                                    id="cmd" 
+                                    aria-label="Command input"
+                                    placeholder="Type a command..."
+                                    autocomplete="off"
+                                    style="font-family:'Monaco', 'Courier New'; color:#ffffff; background-color:#383737; border:0px">
+                                
+                                <div id="google-calendar-button" aria-label="Schedule meeting"></div>
                             </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
 
-                            <!-- Google Calendar Appointment Scheduling begin -->
-<script>
-    window.addEventListener('load', function() {
-        var target = document.getElementById('google-calendar-button');
+    <!-- Separated JavaScript -->
+    <script>
+    // Command handler initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        const cmdInput = document.getElementById('cmd');
+        if (cmdInput) {
+            cmdInput.addEventListener('keydown', function(event) {
+                if (event.keyCode === 13) {
+                    handleCommand(this.value);
+                }
+            });
+        }
 
-        if (target) {
+        // Initialize Google Calendar Button
+        const target = document.getElementById('google-calendar-button');
+        if (target && window.calendar && window.calendar.schedulingButton) {
             window.calendar.schedulingButton.load({
                 url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
                 color: '#039BE5',
@@ -51,90 +81,43 @@
             });
         }
     });
-</script>
 
-                            <script src="particles.js"></script>
-                            <script src="app.js"></script>
+    // Command handler function
+    function handleCommand(command) {
+        if (!command) return;
+        
+        const commands = {
+            'facebook': 'https://www.facebook.com/tafara.makaza.5',
+            'twitter': 'https://twitter.com/captain_zim/',
+            'linkedin': 'https://www.linkedin.com/in/tafara-makaza-99529a127/',
+            'github': 'https://github.com/TafaraMakaza',
+            'email': 'mailto:tm6@williams.edu',
+            'whatsapp': 'https://wa.me/+263784526338'
+        };
 
-                            <!-- stats.js -->
-                            <script src="stats.js"></script>
-                            <script>
-                                var count_particles, stats, update;
-                                stats = new Stats;
-                                stats.setMode(0);
-                                stats.domElement.style.position = 'absolute';
-                                stats.domElement.style.left = '0px';
-                                stats.domElement.style.top = '0px';
-                                document.body.appendChild(stats.domElement);
-                                count_particles = document.querySelector('.js-count-particles');
-                                update = function() {
-                                    stats.begin();
-                                    stats.end();
-                                    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-                                        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-                                    }
-                                    requestAnimationFrame(update);
-                                };
-                                requestAnimationFrame(update);
-                            </script>
+        const sanitizedCommand = command.toLowerCase().trim();
+        const url = commands[sanitizedCommand];
 
+        if (url) {
+            // Security enhancement: Add noopener and noreferrer
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            // Error handling for invalid commands
+            console.log('Invalid command: ' + sanitizedCommand);
+        }
 
-                            <script>
-                                function giveCupcake() {
-                                    var command = document.getElementById('cmd');
-                                    if (command != null) {
+        // Reset command input
+        document.getElementById('cmd').value = '';
+    }
 
-                                        if (command.value.toLowerCase() == 'facebook') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://www.facebook.com/tafara.makaza.5', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'twitter') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://twitter.com/captain_zim/', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'linkedin') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://www.linkedin.com/in/tafara-makaza-99529a127/', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'github') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://github.com/TafaraMakaza', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'email') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('mailto:tm6@williams.edu', '_blank');
-                                            win.focus();
-                                        }
-
-                                        if (command.value.toLowerCase() == 'tuverl') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('http://www.tuverl.com/', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'fixa') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('http://www.fixahr.com/', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'samsung') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://www.youtube.com/watch?v=bqfMCUC-tL8&t=3s', '_blank');
-                                            win.focus();
-                                        }
-                                        if (command.value.toLowerCase() == 'whatsapp') {
-                                            document.body.style.backgroundColor = "#000000";
-                                            var win = window.open('https://wa.me/+263784526338', '_blank');
-                                            win.focus();
-                                        }
-                                    }
-                                }
-                            </script>
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-                            <script type='text/javascript' src='/js/jquery.mousewheel.min.js'></script>
-
-
-                            </html>
+    // Initialize particles
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.particlesJS) {
+            particlesJS('particles-js', {
+                // Your particles configuration here
+            });
+        }
+    });
+    </script>
+</body>
+</html>
