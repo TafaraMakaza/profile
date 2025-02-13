@@ -9,7 +9,7 @@
     <script src="https://calendar.google.com/calendar/scheduling-button-script.js"></script>
     <meta name="viewport" content="width=device-width">
     <style>
-        /* Add custom styles for spacing */
+        /* Add custom styles for spacing and button */
         #cmd {
             margin-bottom: 20px;
             width: 100%;
@@ -20,6 +20,16 @@
         #google-calendar-button {
             margin-top: 20px;
             margin-bottom: 20px;
+        }
+
+        /* Style the Google Calendar button */
+        #google-calendar-button button {
+            background-color: #383737 !important;
+            border: 0px !important;
+            color: #ffffff !important;
+            font-family: 'Monaco', 'Courier New' !important;
+            padding: 8px !important;
+            cursor: pointer !important;
         }
 
         /* Container for better organization */
@@ -69,7 +79,7 @@
             if (target && window.calendar && window.calendar.schedulingButton) {
                 window.calendar.schedulingButton.load({
                     url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ20Ipkzb7jfqhRFBpwujOh7Q2qXlvXRZrE0TgmrHgh3gKZaFggrLvC-KnC1PdHtrifZ5W1ElNdd?gv=true',
-                    color: '#039BE5',
+                    color: '#383737', // Match the input background color
                     label: 'Book an appointment',
                     target: target
                 });
